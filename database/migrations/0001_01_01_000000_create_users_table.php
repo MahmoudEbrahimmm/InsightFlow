@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->unique()->nullable();
             $table->boolean('logout_other_devices')->default(false);
             $table->enum('role',['admin','user'])->default('user');
+            $table->enum('status',['unactive','active'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
