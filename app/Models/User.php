@@ -4,18 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Authenticatable
+class User extends Authenticatable implements TranslatableContract
 {
+    use HasFactory, Translatable;
     protected $fillable = [
+        'id',
         'name',
         'email',
-        'password',
-        'phone',
-        'otp',
-        'role',
         'account_verified_at',
+        'password',
+        'otp',
+        'phone',
         'logout_other_devices',
+        'role',
+        'status',
+        'remember_token',
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = [
@@ -29,9 +38,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function sessions() : HasMany {
+    public function sessions(): HasMany
+    {
         return $this->hasMany(Session::class);
     }
-
-
 }

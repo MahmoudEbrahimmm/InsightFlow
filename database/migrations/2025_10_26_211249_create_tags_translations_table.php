@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('tags_translations', function (Blueprint $table) {
             $table->id();
-            $table->integer('tag_id')->unsigned();
+            $table->unsignedBigInteger('tag_id');
             $table->string('locale')->index();
             $table->string('title');
 
