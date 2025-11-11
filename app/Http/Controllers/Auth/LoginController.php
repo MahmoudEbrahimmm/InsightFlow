@@ -25,12 +25,7 @@ class LoginController extends Controller{
         if($user->logout_other_devices){
             Auth::logoutOtherDevices($request->password);
         }
-        $urls = [
-            'student' => '/student',
-            'teacher' => '/teacher',
-            'admin' => '/admin',
-        ];
 
-        return redirect()->intended($urls[$user->role] ?? '/profile')->with('success', 'You are in');
+        return redirect()->route('profile')->with('success', 'You are in');
     }
 }

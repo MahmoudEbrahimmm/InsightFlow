@@ -11,13 +11,25 @@
 </head>
 <body class="bg-gray-900 text-gray-200">
     <div class="container mx-auto mt-10 p-2">
-        <div class="flex justify-between align-center mb-2">
-          <h1 class="text-3xl font-bold mb-6">Edit Profile</h1>
-          <form action="{{route('logout')}}" method="post">
+        <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-white">Edit Profile</h1>
+    <div class="flex items-center gap-3">
+        <a href="{{ route('home') }}"
+           class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md transition duration-200">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+        <form action="{{ route('logout') }}" method="post">
             @csrf
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Logout</button>
-          </form>
-        </div>
+            <button type="submit"
+                    class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md shadow-md transition duration-200">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </form>
+    </div>
+</div>
+
 
         @if(session('success'))
             <div class="bg-green-500 text-white p-4 rounded mb-4">{{ session('success') }}</div>
@@ -132,6 +144,7 @@
                     </div>
                 @endforeach
             </div>
+
             
 
         </div>

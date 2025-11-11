@@ -24,4 +24,21 @@ class Setting extends Model implements TranslatableContract
         'updated_at',
         'deleted_at'
     ];
+
+    public static function checkSettings(){
+        $settings = Self::all();
+        if(count($settings) < 1){
+            $data = [
+                'id' => 1
+            ];
+
+            foreach(config('app.languages') as $key=>$lang){
+                $data[$key]['title'] = $lang;
+            }
+
+            Self::create($data);
+        }
+
+        return Self::first();
+    }
 }

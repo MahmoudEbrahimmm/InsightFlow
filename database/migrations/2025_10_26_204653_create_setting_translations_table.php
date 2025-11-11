@@ -9,7 +9,7 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('settings_translations', function (Blueprint $table) {
+        Schema::create('setting_translations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('setting_id');
             $table->string('locale')->index();
@@ -24,6 +24,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('settings_translations');
+        Schema::dropIfExists('setting_translations');
     }
 };
