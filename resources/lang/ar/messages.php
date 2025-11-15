@@ -32,6 +32,14 @@ return [
     'admin' => 'مسئول',
     'item' => 'عنصر',
     'title' => 'العنوان',
+    'categories' => 'الاقسام',
+    'users' => 'المستخدمين',
+    'authentication' => 'المصادقه',
+    'image' => 'الصورة',
+    'parent' => 'القسم الرئيسي',
+    'add category' => 'اضافه قسم',
+    'add post' => 'اضافه منشور',
+    'add tag' => 'اضافه تاج',
 
 
     'update_success' => 'تم تحديث الإعدادات بنجاح.',

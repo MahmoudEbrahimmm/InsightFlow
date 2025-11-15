@@ -20,4 +20,10 @@ class Category extends Model implements TranslatableContract
         'updated_at',
         'deleted_at'
     ];
+    public function parent(){
+        return $this->belongsTo(Category::class, 'parent');
+    }
+    public function children(){
+        return $this->hasMany(Category::class, 'parent');
+    }
 }

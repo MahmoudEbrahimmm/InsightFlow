@@ -8,7 +8,11 @@
             <div class="sb-sidenav-menu-heading">Pages</div>
             <a class="nav-link" href="{{ route('dashboard.users.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                Users
+                {{ __('messages.users') }}
+            </a>
+            <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-caegories"></i></div>
+                {{ __('messages.categories') }}
             </a>
             
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
@@ -27,7 +31,7 @@
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#Authentication"
                 aria-expanded="false" aria-controls="Authentication">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                Authentication
+                {{ __('messages.authentication') }}
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="Authentication" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
