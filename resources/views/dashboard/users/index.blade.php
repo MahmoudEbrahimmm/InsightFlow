@@ -2,7 +2,7 @@
 @section('title-page','المستخدمين')
 @section('content')
 <x-breadcrumb title="المستخدمين" />
-<a href="{{route('dashboard.users.create')}}" class="btn btn-primary">اضافة موظف جديد</a>
+<a href="{{route('dashboard.users.create')}}" class="btn btn-primary">{{ __('messages.create') }}</a>
 <div class="container">
     <div class="row">
         @if (session()->has('success'))

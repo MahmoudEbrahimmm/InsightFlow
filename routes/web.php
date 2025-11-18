@@ -3,6 +3,14 @@
 use App\Http\Controllers\Dashboard\SettingsController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('lang/{lang}', function ($lang) {
+    if (in_array($lang, ['ar', 'en'])) {
+        session(['locale' => $lang]);
+        app()->setLocale($lang);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 
 Route::view('/', 'index')->name('home');
 

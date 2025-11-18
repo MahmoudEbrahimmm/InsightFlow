@@ -9,15 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model implements TranslatableContract
 {
-    use HasFactory ,Translatable;
-    public $translatedAttributes = ['title', 'content'];
+    use HasFactory, Translatable;
+
+    public $translatedAttributes = ['title', 'content', 'smallDescription'];
 
     protected $fillable = [
-        'id',
         'image',
         'category_id',
-        'created_at',
-        'updated_at',
-        'deleted_at'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

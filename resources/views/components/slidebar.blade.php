@@ -14,6 +14,10 @@
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
                 {{ __('messages.categories') }}
             </a>
+            <a class="nav-link" href="{{ route('dashboard.posts.index') }}">
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-image"></i></div>
+                {{ __('messages.posts') }}
+            </a>
             
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                 aria-expanded="false" aria-controls="collapseLayouts">
