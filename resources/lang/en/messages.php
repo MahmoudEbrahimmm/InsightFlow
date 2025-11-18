@@ -39,7 +39,10 @@ return [
     'add category' => 'Add Category',
     'add post' => 'Add Post',
     'add tag' => 'Add Tag',
+    'action' => 'Action',
+    'back' => 'Back',
 
+    'con-delete'=> 'Are you sure about deleting it?',
     'update_success' => 'Settings updated successfully.',
     'update_error' => 'Failed to update settings, please try again.',
 ];

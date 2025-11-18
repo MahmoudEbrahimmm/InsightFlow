@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3">
+
                         <!-- Image -->
                         <div class="mb-3">
                             <label class="form-label">{{__('messages.image')}}</label>
@@ -22,7 +23,7 @@
                         <!-- Categories -->
                         <div class="mb-3">
                             <label class="form-label">{{__('messages.categories')}}</label>
-                            <select name="parent" class="form-select">
+                            <select name="parent_id" class="form-select">
                                 <option value="0">{{__('messages.parent')}}</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
@@ -81,13 +82,12 @@
 
             {{-- Submit Buttons (bottom-right) --}}
             <div class="d-flex justify-content-end mt-4">
-                <a href="{{ route('dashboard.categories.index') }}" class="btn btn-sm">
-                    <i class="fa fa-ban"></i> {{ __('messages.cancel') }}
-                </a>
                 <button type="submit" class="btn btn-primary btn-sm me-2">
                     <i class="fa fa-dot-circle-o"></i> {{ __('messages.submit') }}
                 </button>
-                
+                                <a href="{{ route('dashboard.categories.index') }}" class="btn btn-sm">
+                    <i class="fa fa-ban"></i> {{ __('messages.cancel') }}
+                </a>
             </div>
 
         </form>

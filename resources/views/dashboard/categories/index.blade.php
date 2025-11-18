@@ -1,38 +1,66 @@
-@extends('layouts.dashboard');
+@extends('layouts.dashboard')
+
 @section('content')
     <x-breadcrumb title="Categories" />
+
     @if (session()->has('success'))
         <div class="alert bg-success text-white mb-3 mt-3">{{ session('success') }}</div>
     @endif
-    <a href="{{ route('dashboard.categories.create') }}" class="btn btn-primary">{{ __('messages.add category') }}</a>
-    <div class="contaniner">
+
+    <a href="{{ route('dashboard.categories.create') }}" class="btn btn-primary mb-3">
+        {{ __('messages.add category') }}
+    </a>
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-10 m-auto">
-                <h3 class="text-center">{{ __('messages.categories') }}</h3>
-                <table class="table">
+            <div class="col-md-10 m-auto text-center">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>{{ __('messages.image') }}</th>
-                            <th>{{ __('messages.parent') }}</th>
                             <th>{{ __('messages.title') }}</th>
-                            <th>{{ __('messages.content') }}</th>
+                            <th>{{ __('messages.action') }}</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @foreach ($categories as $category)
                             <tr>
-                                <td> {{ $category->id ?? '' }}</td>
+                                <td>{{ $category->id }}</td>
                                 <td>
-                                    <img src="{{ asset($category->image) }}" width="100">
+                                    <img src="{{ asset($category->image) }}" width="100" alt="Category Image">
                                 </td>
-                                <td>{{ $category->parent_id ?? '' }}</td>
-                                <td>{{ $category->title ?? '' }}</td>
-                                <td>{{ $category->content ?? '' }}</td>
+                                <td>{{ $category->title }}</td>
+                                <td>
+                                    <a href="{{ route('dashboard.categories.show', $category->id) }}"
+                                        class="btn btn-primary btn-sm px-2">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+
+                                    <a href="{{ route('dashboard.categories.edit', $category->id) }}"
+                                        class="btn btn-success btn-sm px-2">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <form action="{{ route('dashboard.categories.destroy', $category->id) }}"
+                                        method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm px-2"
+                                            onclick="return confirm('{{ __('messages.con-delete') }}')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </form>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
+
                 </table>
+
             </div>
         </div>
     </div>

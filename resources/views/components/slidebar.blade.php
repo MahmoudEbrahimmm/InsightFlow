@@ -11,7 +11,7 @@
                 {{ __('messages.users') }}
             </a>
             <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
-                <div class="sb-nav-link-icon"><i class="fas fa-caegories"></i></div>
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
                 {{ __('messages.categories') }}
             </a>
             
