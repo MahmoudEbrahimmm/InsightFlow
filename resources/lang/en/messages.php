@@ -57,6 +57,8 @@ return [
     'updated' => 'Update_at',
     'role' => 'Role',
     'name' => 'Name',
+    'pages' => 'Pages',
+    'auther' => 'Auther',
 
     'con-delete'=> 'Are you sure about deleting it?',
     'update_success' => 'Settings updated successfully.',

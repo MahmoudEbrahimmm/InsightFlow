@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
+    protected $postModel;
+    public function __construct(Post $post)
+    {
+        $this->postModel = $post;
+    }
+
     public function index()
     {
         $posts = Post::with('category')->get();
@@ -26,6 +32,7 @@ class PostsController extends Controller
     {
         $post = Post::create([
             'category_id' => $request->category_id,
+            'user_id' => auth()->id(),
         ]);
 
         if ($request->hasFile('image')) {
@@ -40,9 +47,11 @@ class PostsController extends Controller
 
         $locales = ['en', 'ar'];
         foreach ($locales as $locale) {
-            $post->translateOrNew($locale)->title = $request->input($locale . '.title');
-            $post->translateOrNew($locale)->content = $request->input($locale . '.content');
-            $post->translateOrNew($locale)->smallDescription = $request->input($locale . '.smallDescription');
+            if ($request->has($locale . '.title') || $request->has($locale . '.content') || $request->has($locale . '.smallDescription')) {
+                $post->translateOrNew($locale)->title = $request->input($locale . '.title', '');
+                $post->translateOrNew($locale)->content = $request->input($locale . '.content', '');
+                $post->translateOrNew($locale)->smallDescription = $request->input($locale . '.smallDescription', '');
+            }
         }
         $post->save();
 
@@ -71,6 +80,7 @@ class PostsController extends Controller
 
         $post->update([
             'category_id' => $request->category_id,
+            'user_id' => auth()->id(),
         ]);
 
         if ($request->hasFile('image')) {
@@ -88,9 +98,11 @@ class PostsController extends Controller
 
         $locales = ['en', 'ar'];
         foreach ($locales as $locale) {
-            $post->translateOrNew($locale)->title = $request->input($locale . '.title');
-            $post->translateOrNew($locale)->content = $request->input($locale . '.content');
-            $post->translateOrNew($locale)->smallDescription = $request->input($locale . '.smallDescription');
+            if ($request->has($locale . '.title') || $request->has($locale . '.content') || $request->has($locale . '.smallDescription')) {
+                $post->translateOrNew($locale)->title = $request->input($locale . '.title', '');
+                $post->translateOrNew($locale)->content = $request->input($locale . '.content', '');
+                $post->translateOrNew($locale)->smallDescription = $request->input($locale . '.smallDescription', '');
+            }
         }
         $post->save();
 

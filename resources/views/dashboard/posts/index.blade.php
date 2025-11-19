@@ -20,7 +20,9 @@
                             <th>ID</th>
                             <th>{{ __('messages.image') }}</th>
                             <th>{{ __('messages.title') }}</th>
+                            <th>{{ __('messages.auther') }}</th>
                             <th>{{ __('messages.action') }}</th>
+
                         </tr>
                     </thead>
 
@@ -32,17 +34,22 @@
                                     <img src="{{ asset($post->image) }}" width="100" alt="post Image">
                                 </td>
                                 <td>{{ $post->title }}</td>
+                                 <td>{{ $post->user ? $post->user->name : 'writer' }}</td>
                                 <td>
+                                    @can('view',$post)
                                     <a href="{{ route('dashboard.posts.show', $post->id) }}"
                                         class="btn btn-primary btn-sm px-2">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-
+                                    @endcan
+                                    @can('update', $post)
                                     <a href="{{ route('dashboard.posts.edit', $post->id) }}"
                                         class="btn btn-success btn-sm px-2">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
+                                    @endcan
 
+                                    @can('delete', $post)
                                     <form action="{{ route('dashboard.posts.destroy', $post->id) }}"
                                         method="POST" style="display:inline-block;">
                                         @csrf
@@ -51,7 +58,7 @@
                                             onclick="return confirm('{{ __('messages.con-delete') }}')">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
-
+                                    @endcan
                                     </form>
 
                                 </td>

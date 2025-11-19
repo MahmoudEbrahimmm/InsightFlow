@@ -13,10 +13,10 @@ Route::group(
     
     Route::view('/', 'index')->name('home');
     
-    Route::get('settings/index',[SettingsController::class,'index'])
+    Route::get('settings/index',[SettingsController::class,'index'])->middleware('roles:admin')
     ->name('settings');
     
-    Route::post('settings/update/{setting}',[SettingsController::class,'update'])
+    Route::post('settings/update/{setting}',[SettingsController::class,'update'])->middleware('roles:admin')
     ->name('settings.update');
-    
+        
 });

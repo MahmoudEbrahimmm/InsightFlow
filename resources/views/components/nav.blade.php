@@ -13,7 +13,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="langDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                     {{ strtoupper(app()->getLocale()) }}
+                    <i class="fa-solid fa-earth-americas"></i> {{ strtoupper(app()->getLocale()) }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -35,6 +35,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    @if(auth()->user()->role === 'admin')
                     <li><a class="dropdown-item" href="{{ route('dashboard.index') }}"><i
                                 class="fas fa-tachometer-alt"></i> {{ __('messages.dashboard') }}</a></li>
                     <li><a class="dropdown-item" href="{{ route('settings') }}"><i class="fa-solid fa-gear"></i>
@@ -42,6 +43,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
+                    @endif
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <li><button type="submit" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i>

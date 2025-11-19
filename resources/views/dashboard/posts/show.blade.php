@@ -21,6 +21,7 @@
                     </div>
                     <div class="col-md-8">
                         <p><strong>ID</strong> {{ $post->id }}</p>
+                        <p><strong>{{ __('messages.auther') }}:</strong> {{ $post->user ? $post->user->name : 'writer' }}</p>
                         <p><strong>{{ __('messages.categories') }}:</strong> {{ $post->category?->title ?? '—' }}</p>
                         <p><strong>{{ __('messages.created') }}:</strong> {{ $post->created_at->format('Y-m-d H:i') }}</p>
                         <p><strong>{{ __('messages.updated') }}:</strong> {{ $post->updated_at->format('Y-m-d H:i') }}</p>

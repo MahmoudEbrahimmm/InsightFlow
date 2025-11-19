@@ -10,7 +10,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group([
     'middleware' => [
         'auth',
-        'roles:admin',
         'localeSessionRedirect',
         'localizationRedirect',
         'localeViewPath'
@@ -19,9 +18,8 @@ Route::group([
     'as' => 'dashboard.'
 ], function () {
 
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
-
-    Route::resource('users', UsersController::class);
-    Route::resource('categories', CategoriesController::class);
+    Route::get('/', [DashboardController::class, 'index'])->middleware('roles:admin')->name('index');
+    Route::resource('users', UsersController::class)->middleware('roles:admin');
+    Route::resource('categories', CategoriesController::class)->middleware('roles:admin');;
     Route::resource('posts', PostsController::class);
 });
