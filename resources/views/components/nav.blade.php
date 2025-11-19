@@ -13,21 +13,20 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="langDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    🌐 {{ strtoupper(app()->getLocale()) }}
+                     {{ strtoupper(app()->getLocale()) }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
-                    <li>
-                        <a class="dropdown-item" href="{{ route('lang.switch', 'ar') }}">
-                            🇪🇬 العربية
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('lang.switch', 'en') }}">
-                            🇺🇸 English
-                        </a>
-                    </li>
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" class="dropdown-item" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
+
 
         </ul>
         <!-- Navbar-->
