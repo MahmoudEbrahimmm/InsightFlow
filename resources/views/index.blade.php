@@ -52,7 +52,7 @@
                     <div class="d-flex gap-3 justify-content-md-start justify-content-center">
                         <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4">تسجيل الدخول</a>
                         <a href="{{ route('register') }}" class="btn btn-outline-success btn-lg px-4">إنشاء حساب</a>
-                        <a href="{{ route('dashboard.index') }}" class="btn btn-outline-info btn-lg px-4">لوحة التحكم</a>
+                        <a href="{{ route('dashboard.posts.index') }}" class="btn btn-outline-info btn-lg px-4">لوحة التحكم</a>
 
                     </div>
                 </div>

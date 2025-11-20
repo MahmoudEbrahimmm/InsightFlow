@@ -71,7 +71,7 @@
                                 <div class="form-group mb-3">
                                     <label class="form-label">{{ __('messages.content') }}
                                         ({{ $lang }})</label>
-                                    <textarea name="{{ $key }}[content]" class="form-control" rows="5">{{ $setting->translate($key)->content }}</textarea>
+                                    <textarea name="{{ $key }}[content]" class="form-control" rows="5"></textarea>
                                 </div>
 
                             </div>
