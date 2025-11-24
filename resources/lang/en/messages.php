@@ -59,6 +59,7 @@ return [
     'name' => 'Name',
     'pages' => 'Pages',
     'auther' => 'Auther',
+    'latest-news' => 'Latest News',
 
     'con-delete'=> 'Are you sure about deleting it?',
     'update_success' => 'Settings updated successfully.',

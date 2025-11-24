@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\SettingsController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -11,7 +12,9 @@ Route::group(
 ], function(){ 
 
     
-    Route::view('/', 'index')->name('home');
+    
+    Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
     
     Route::get('settings/index',[SettingsController::class,'index'])->middleware('roles:admin')
     ->name('settings');
